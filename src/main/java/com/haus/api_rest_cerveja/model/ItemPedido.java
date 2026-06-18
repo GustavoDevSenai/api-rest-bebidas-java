@@ -1,6 +1,8 @@
 package com.haus.api_rest_cerveja.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class ItemPedido {
     private Integer quantidade;
 
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
+    @JsonIgnoreProperties({"imagem"})
     @ManyToOne
     @JoinColumn(name = "beer_id")
     private Beer beer;

@@ -1,6 +1,7 @@
 package com.haus.api_rest_cerveja.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -20,6 +21,7 @@ public class Beer {
 
     @Min(value = 0, message = "Quantidade deve ser maior ou igual a zero")
     private Integer quantidade;
+
 
     private String imagem;
 
