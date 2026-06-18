@@ -9,6 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,5 +44,19 @@ public class BeerServiceTest {
         assertEquals("Heineken", resultado.getNome());
 
         verify(repository, times(1)).save(any());
+    }
+
+    @Test
+    void deveListarCervejas(){
+
+        List<Beer> lista = List.of(
+                new Beer()
+        );
+
+        when(repository.findAll()).thenReturn(lista);
+
+        List<Beer> resultado = service.listar();
+
+        assertEquals(1,resultado.size());
     }
 }
