@@ -27,4 +27,11 @@ public class PedidoController {
     public List<Pedido> listar(){
         return pedidoService.listarTodos();
     }
+
+    @PutMapping("/{id}/status")
+    public Pedido atualizarStatus(
+            @PathVariable Long id,
+            @RequestParam String status){
+        return pedidoService.atualizarStatus(id,status);
+    }
 }
